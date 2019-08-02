@@ -25,3 +25,24 @@ class Main extends PluginBase implements Listener{
 public function onEnable(){
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
     }
+    public function onJoin(PlayerJoinEvent $event) {
+        $player = $event->getPlayer();
+        $name = $player->getName();
+        $event->setJoinMessage("§0• §7[§b+§7]§f " . $name);
+        $level = $this->getServer()->getLevelByName("world");
+        $x = -259;
+        $y = 84;
+        $z = -302;
+        $pos = new Position($x, $y, $z, $level);
+        $player->teleport($pos);
+    }
+    public function onQuit(PlayerQuitEvent $event) {
+        $player = $event->getPlayer();
+        $name = $player->getName();
+        $event->setQuitMessage("§0• §7[§b-§7]§f " . $name);
+    }
+    public function onDeath(PlayerDeathEvent $event) {
+        $player = $event->getPlayer();
+        $name = $player->getName();
+        $event->setDeathMessage("§0• §7[§4X§7]§f " . $name);
+    }
