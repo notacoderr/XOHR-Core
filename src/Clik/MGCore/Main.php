@@ -1,6 +1,6 @@
 <?php
 
-namespace Clik\MG-Core;
+namespace Clik\MGCore;
 
 use pocketmine\plugin\PluginBase;
 use pocketmine\command\Command;
