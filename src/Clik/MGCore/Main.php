@@ -35,9 +35,9 @@ public function onEnable(){
         $player->getInventory()->clearAll();
         $player->getArmorInventory()->clearAll();
         $level = $this->getServer()->getLevelByName("world");
-        $x = -259;
-        $y = 84;
-        $z = -302;
+        $x = 24;
+        $y = 69;
+        $z = -21;
         $pos = new Position($x, $y, $z, $level);
         $player->teleport($pos);
     }
@@ -116,9 +116,9 @@ public function onEnable(){
                 $player->getInventory()->clearAll();
                 $player->getArmorInventory()->clearAll();
                 $level = $this->getServer()->getLevelByName("world");
-                $x = -18;
-                $y = 66;
-                $z = 0;
+                $x = 24;
+                $y = 69;
+                $z = -21;
                 $pos = new Position($x, $y, $z, $level);
                 $sender->teleport($pos);
                 $sender->sendMessage($this->fts . TF::GOLD . "Teleported to Hub");
