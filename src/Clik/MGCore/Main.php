@@ -9,6 +9,8 @@ use pocketmine\utils\TextFormat as TF;
 use pocketmine\level\Position;
 use pocketmine\entity\Effect;
 use pocketmine\entity\EffectInstance;
+use pocketmine\inventory\PlayerInventory;
+use pocketmine\inventory\ArmorInventory;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\player\PlayerQuitEvent;
@@ -22,12 +24,16 @@ use pocketmine\Player;
 
 class Main extends PluginBase implements Listener{
 
+public $fts = "§7[§6Orion§7] ";
+
 public function onEnable(){
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
     }
     public function onJoin(PlayerJoinEvent $event) {
         $player = $event->getPlayer();
         $event->setJoinMessage("");
+        $player->getInventory()->clearAll();
+        $player->getArmorInventory()->clearAll();
         $level = $this->getServer()->getLevelByName("world");
         $x = -259;
         $y = 84;
@@ -37,17 +43,11 @@ public function onEnable(){
     }
     public function onQuit(PlayerQuitEvent $event) {
         $event->setQuitMessage("");
+        $player->getInventory()->clearAll();
+        $player->getArmorInventory()->clearAll();
     }
     public function onDeath(PlayerDeathEvent $event) {
         $event->setDeathMessage("");
-    }
-    public function onRespawn(PlayerRespawnEvent $event) {
-        $level = $this->getServer()->getLevelByName("world");
-        $x = -259;
-        $y = 82;
-        $z = -302;
-        $pos = new Position($x, $y, $z, $level);
-        $event->setRespawnPosition($pos);
     }
     public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args): bool
     {
@@ -57,7 +57,7 @@ public function onEnable(){
                     $sender->setGamemode(1);
                     $sender->sendMessage($this->fts . TF::GREEN . "Your gamemode has been set to creative!");
                 } else {
-                    $sender->sendMessage($this->fts . TF::RED . "An error has occurred. Please contact Clik#3845 on Discord to report this");    
+                    $sender->sendMessage($this->fts . TF::RED . "An error has occurred. Please contact Jes'kad Ad'aryc#3845 on Discord to report this");    
                 }
             }
         }
@@ -67,7 +67,7 @@ public function onEnable(){
                     $sender->setGamemode(0);
                     $sender->sendMessage($this->fts . TF::GREEN . "Your gamemode has been set to Survival!");
                 } else {
-                    $sender->sendMessage($this->fts . TF::RED . "An error has occurred. Please contact Clik#3845 on Discord to report this");
+                    $sender->sendMessage($this->fts . TF::RED . "An error has occurred. Please contact Jes'kad Ad'aryc#3845 on Discord to report this");
                 }
             }
         }
@@ -77,7 +77,7 @@ public function onEnable(){
                     $sender->setGamemode(2);
                     $sender->sendMessage($this->fts . TF::GREEN . "Your gamemode has been set to Adventure!");
                 } else {
-                    $sender->sendMessage($this->fts . TF::RED . "An error has occurred. Please contact Clik#3845 on Discord to report this");
+                    $sender->sendMessage($this->fts . TF::RED . "An error has occurred. Please contact Jes'kad Ad'aryc#3845 on Discord to report this");
                 }
             }
         }
@@ -87,7 +87,7 @@ public function onEnable(){
                     $sender->setGamemode(3);
                     $sender->sendMessage($this->fts . TF::GREEN . "Your gamemode has been set to Spectator!");
                 } else {
-                    $sender->sendMessage($this->fts . TF::RED . "An error has occurred. Please contact Clik#3845 on Discord to report this");
+                    $sender->sendMessage($this->fts . TF::RED . "An error has occurred. Please contact Jes'kad Ad'aryc#3845 on Discord to report this");
                 }
             }
         }
@@ -97,7 +97,7 @@ public function onEnable(){
                     $sender->getLevel()->setTime(6000);
                     $sender->sendMessage($this->fts . TF::GREEN . "Set the time to Day (6000) in your world!");
                 } else {
-                    $sender->sendMessage($this->fts . TF::RED . "An error has occurred. Please contact Clik#3845 on Discord to report this");
+                    $sender->sendMessage($this->fts . TF::RED . "An error has occurred. Please contact Jes'kad Ad'aryc#3845 on Discord to report this");
                 }
             }
         }
@@ -107,12 +107,14 @@ public function onEnable(){
                     $sender->getLevel()->setTime(16000);
                     $sender->sendMessage($this->fts . TF::GREEN . "Set the time to Night (16000) in your world!");
                 } else {
-                    $sender->sendMessage($this->fts . TF::RED . "An error has occurred. Please contact Clik#3845 on Discord to report this");
+                    $sender->sendMessage($this->fts . TF::RED . "An error has occurred. Please contact Jes'kad Ad'aryc#3845 on Discord to report this");
                 }
             }
         }
         if($cmd->getName() == "hub") {
             if($sender instanceof Player) {
+                $player->getInventory()->clearAll();
+                $player->getArmorInventory()->clearAll();
                 $level = $this->getServer()->getLevelByName("world");
                 $x = -18;
                 $y = 66;
@@ -122,7 +124,7 @@ public function onEnable(){
                 $sender->sendMessage($this->fts . TF::GOLD . "Teleported to Hub");
                 $sender->setGamemode(0);
             } else {
-                $sender->sendMessage($this->fts . TF::RED . "An error has occurred. Please contact Clik#3845 on Discord to report this");
+                $sender->sendMessage($this->fts . TF::RED . "An error has occurred. Please contact Jes'kad Ad'aryc#3845 on Discord to report this");
             }
         }
         if($cmd->getName() == "rules") {
