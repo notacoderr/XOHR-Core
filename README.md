@@ -19,3 +19,4 @@ This specification is in addition to the Apache 2.0 License, seen in [License.md
 - Hub command accessible by everyone
 - Inventory clearing on Join, Leave, and Hub events
 - Rules and Info commands
+- Per-World Chat
