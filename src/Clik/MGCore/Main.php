@@ -137,6 +137,16 @@ public function onEnable(){
                 $sender->sendMessage("§f- §eUse Common Sense. Failure to do so will not exempt you from punishment.");
             }
         }
+        if($cmd->getName() == "info") {
+            if($sender instanceof Player) {
+                $sender->sendMessage("§6§o§lOrion Minigames Rules§r");
+                $sender->sendMessage("§eOrion Minigames is part of a 3 server");
+                $sender->sendMessage("§enetwork, consisting of Minigames, PvP & Plots, and RolePlay.");
+                $sender->sendMessage("§eThe Main Owner is VesperSoup48737, (Jes'kad Ad'aryc#3845)");
+                $sender->sendMessage("§eThe servers are collectively owned by Jes'kad, Switchblade, Noah, and Celery.");
+                $sender->sendMessage("§eDiscord Link: https://discord.gg/ECGhkJc");
+            }
+        }
     return true;
     }
 }
