@@ -15,6 +15,7 @@ use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\player\PlayerQuitEvent;
 use pocketmine\event\player\PlayerDeathEvent;
+use pocketmine\event\player\PlayerChatEvent;
 use pocketmine\Server;
 use pocketmine\Player;
 
@@ -44,6 +45,18 @@ public function onEnable(){
     }
     public function onDeath(PlayerDeathEvent $event) {
         $event->setDeathMessage("");
+    }
+    public function onChat(PlayerChatEvent $event) {
+        $player = $event->getPlayer();
+        $recipients = $event->getRecipients();
+            foreach($recipients as $key => $recipient){
+		if($recipient instanceof Player){
+		    if($recipient->getLevel() != $player->getLevel()){
+			unset($recipients[$key]);
+			}
+		}
+	}
+	$event->setRecipients($recipients);
     }
     public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args): bool
     {
