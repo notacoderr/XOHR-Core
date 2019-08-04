@@ -14,13 +14,9 @@ use pocketmine\inventory\ArmorInventory;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\player\PlayerQuitEvent;
-use pocketmine\event\player\PlayerRespawnEvent;
 use pocketmine\event\player\PlayerDeathEvent;
-use pocketmine\event\block\BlockPlaceEvent;
-use pocketmine\event\block\BlockBreakEvent;
 use pocketmine\Server;
 use pocketmine\Player;
-//add more later if necessary.... i think this is all for rn tho
 
 class Main extends PluginBase implements Listener{
 
