@@ -46,6 +46,9 @@ public function onEnable(){
     public function onDeath(PlayerDeathEvent $event) {
         $event->setDeathMessage("");
     }
+    /**
+     * @param PlayerChatEvent $event
+     */
     public function onChat(PlayerChatEvent $event) {
         $player = $event->getPlayer();
         $recipients = $event->getRecipients();
