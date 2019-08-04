@@ -7,8 +7,6 @@ use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\utils\TextFormat as TF;
 use pocketmine\world\Position;
-use pocketmine\entity\Effect;
-use pocketmine\entity\EffectInstance;
 use pocketmine\inventory\PlayerInventory;
 use pocketmine\inventory\ArmorInventory;
 use pocketmine\event\Listener;
@@ -31,7 +29,7 @@ public function onEnable(){
         $event->setJoinMessage("");
         $player->getInventory()->clearAll();
         $player->getArmorInventory()->clearAll();
-        $world = $this->getServer()->getWorldByName("world");
+        $world = $this->WorldManager->getWorldByName("world");
         $x = 24;
         $y = 69;
         $z = -21;
@@ -127,7 +125,7 @@ public function onEnable(){
             if($sender instanceof Player) {
                 $player->getInventory()->clearAll();
                 $player->getArmorInventory()->clearAll();
-                $world = $this->getServer()->getWorldByName("world");
+                $world = $this->WorldManager->getWorldByName("world");
                 $x = 24;
                 $y = 69;
                 $z = -21;
