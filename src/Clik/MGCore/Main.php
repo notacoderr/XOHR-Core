@@ -6,7 +6,7 @@ use pocketmine\plugin\PluginBase;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\utils\TextFormat as TF;
-use pocketmine\level\Position;
+use pocketmine\world\Position;
 use pocketmine\entity\Effect;
 use pocketmine\entity\EffectInstance;
 use pocketmine\inventory\PlayerInventory;
@@ -31,11 +31,11 @@ public function onEnable(){
         $event->setJoinMessage("");
         $player->getInventory()->clearAll();
         $player->getArmorInventory()->clearAll();
-        $level = $this->getServer()->getLevelByName("world");
+        $world = $this->getServer()->getWorldByName("world");
         $x = 24;
         $y = 69;
         $z = -21;
-        $pos = new Position($x, $y, $z, $level);
+        $pos = new Position($x, $y, $z, $world);
         $player->teleport($pos);
     }
     public function onQuit(PlayerQuitEvent $event) {
@@ -54,7 +54,7 @@ public function onEnable(){
         $recipients = $event->getRecipients();
             foreach($recipients as $key => $recipient){
 		if($recipient instanceof Player){
-		    if($recipient->getLevel() != $player->getLevel()){
+		    if($recipient->getWorld() != $player->getWorld()){
 			unset($recipients[$key]);
 			}
 		}
@@ -106,7 +106,7 @@ public function onEnable(){
         if($cmd->getName() == "day") {
             if($sender instanceof Player) {
                 if($sender->hasPermission("orioncore.day.use")) {
-                    $sender->getLevel()->setTime(6000);
+                    $sender->getWorld()->setTime(6000);
                     $sender->sendMessage($this->fts . TF::GREEN . "Set the time to Day (6000) in your world!");
                 } else {
                     $sender->sendMessage($this->fts . TF::RED . "An error has occurred. Please contact Jes'kad Ad'aryc#3845 on Discord to report this");
@@ -116,7 +116,7 @@ public function onEnable(){
         if($cmd->getName() == "night") {
             if($sender instanceof Player) {
                 if($sender->hasPermission("orioncore.night.use")) {
-                    $sender->getLevel()->setTime(16000);
+                    $sender->getWorld()->setTime(16000);
                     $sender->sendMessage($this->fts . TF::GREEN . "Set the time to Night (16000) in your world!");
                 } else {
                     $sender->sendMessage($this->fts . TF::RED . "An error has occurred. Please contact Jes'kad Ad'aryc#3845 on Discord to report this");
@@ -127,11 +127,11 @@ public function onEnable(){
             if($sender instanceof Player) {
                 $player->getInventory()->clearAll();
                 $player->getArmorInventory()->clearAll();
-                $level = $this->getServer()->getLevelByName("world");
+                $world = $this->getServer()->getWorldByName("world");
                 $x = 24;
                 $y = 69;
                 $z = -21;
-                $pos = new Position($x, $y, $z, $level);
+                $pos = new Position($x, $y, $z, $world);
                 $sender->teleport($pos);
                 $sender->sendMessage($this->fts . TF::GOLD . "Teleported to Hub");
                 $sender->setGamemode(0);
