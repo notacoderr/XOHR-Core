@@ -12,9 +12,6 @@ This specification is in addition to the Apache 2.0 License, seen in [License.md
     </a>
 </div>
 
-### 4.0 Changelog
-<script src="https://gist.github.com/dktapps/e8762bb96896cc4fccb58d4b9a19c5a6.js"></script>
-
 ### Features
 - Blank Join/Leave/Death messages
 - AutoSpawn onJoin()
