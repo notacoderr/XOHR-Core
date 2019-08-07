@@ -7,8 +7,6 @@ use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\utils\TextFormat as TF;
 use pocketmine\level\Position;
-use pocketmine\entity\Effect;
-use pocketmine\entity\EffectInstance;
 use pocketmine\inventory\PlayerInventory;
 use pocketmine\inventory\ArmorInventory;
 use pocketmine\event\Listener;
