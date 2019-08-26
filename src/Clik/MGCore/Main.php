@@ -25,7 +25,8 @@ public function onEnable(){
     }
     public function onJoin(PlayerJoinEvent $event) {
         $player = $event->getPlayer();
-        $event->setJoinMessage("");
+        $name = $player->getName();
+        $event->setJoinMessage("§0• §7[§b+§7]§f". $name);
         $player->getInventory()->clearAll();
         $player->getArmorInventory()->clearAll();
         $level = $this->getServer()->getLevelByName("world");
@@ -36,12 +37,16 @@ public function onEnable(){
         $player->teleport($pos);
     }
     public function onQuit(PlayerQuitEvent $event) {
-        $event->setQuitMessage("");
+        $player = $event->getPlayer();
+        $name = $player->getName();
+        $event->setQuitMessage("§0• §7[§b-§7]§f" . $name);
         $player->getInventory()->clearAll();
         $player->getArmorInventory()->clearAll();
     }
     public function onDeath(PlayerDeathEvent $event) {
-        $event->setDeathMessage("");
+        $player = $event->getPlayer();
+        $name = $player->getName();
+        $event->setDeathMessage("§0• §7[§4X§7]§f" . $name);
     }
     public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args): bool
     {
