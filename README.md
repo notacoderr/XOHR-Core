@@ -1,6 +1,6 @@
-# MG-Core
+# Switchs Core
 
-### Core and Listeners package for Orion Minigames
+### Core and Listeners package for Orion Minigames, or whatever the hell it is now. The server run by Switchblade304, for all us depressed old timer Minecrafters.
 
 Copying of this program is not allowed unless permission is granted from the Repository Owner.
 This specification is in addition to the Apache 2.0 License, seen in [License.md](https://github.com/LegoFan48737/MG-Core/blob/master/LICENSE)
@@ -17,6 +17,6 @@ This specification is in addition to the Apache 2.0 License, seen in [License.md
 - AutoSpawn onJoin()
 - GMC, GMS, GMA, GMSPC, Day, & Night commands with permission-only access
 - Hub command accessible by everyone
-- Inventory clearing on Join, Leave, and Hub events
+- Inventory clearing on Join, Leave, Hub and World Switching events
 - Rules and Info commands
 - Per-World Chat
