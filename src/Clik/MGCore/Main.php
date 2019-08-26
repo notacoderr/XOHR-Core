@@ -13,7 +13,6 @@ use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\player\PlayerQuitEvent;
 use pocketmine\event\player\PlayerDeathEvent;
-use pocketmine\event\player\PlayerChatEvent;
 use pocketmine\Server;
 use pocketmine\Player;
 
@@ -43,21 +42,6 @@ public function onEnable(){
     }
     public function onDeath(PlayerDeathEvent $event) {
         $event->setDeathMessage("");
-    }
-    /**
-     * @param PlayerChatEvent $event
-     */
-    public function onChat(PlayerChatEvent $event) {
-        $player = $event->getPlayer();
-        $recipients = $event->getRecipients();
-            foreach($recipients as $key => $recipient){
-		if($recipient instanceof Player){
-		    if($recipient->getLevel() != $player->getLevel()){
-			unset($recipients[$key]);
-			}
-		}
-	}
-	$event->setRecipients($recipients);
     }
     public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args): bool
     {
@@ -149,11 +133,11 @@ public function onEnable(){
         }
         if($cmd->getName() == "info") {
             if($sender instanceof Player) {
-                $sender->sendMessage("§6§o§lOrion Minigames Rules§r");
-                $sender->sendMessage("§eOrion Minigames is part of a 3 server");
-                $sender->sendMessage("§enetwork, consisting of Minigames, PvP & Plots, and RolePlay.");
-                $sender->sendMessage("§eThe Main Owner is VesperSoup48737, (Jes'kad Ad'aryc#3845)");
-                $sender->sendMessage("§eThe servers are collectively owned by Jes'kad, Switchblade, Noah, and Celery.");
+                $sender->sendMessage("§6§o§lOrion Minigames Info§r");
+                $sender->sendMessage("§eOrion Minigames is a holdout server for the remnants");
+                $sender->sendMessage("§of JM Pocket Creative, Nebula Games, & FruityMCPE.");
+                $sender->sendMessage("§eThe Main Owner is Switchblade304, although Jes'kad Ad'aryc does a lot of the work");
+                $sender->sendMessage("§eThe server is technically collectively owned by Jes'kad, Switchblade, Noah, and Celery.");
                 $sender->sendMessage("§eDiscord Link: https://discord.gg/ECGhkJc");
             }
         }
