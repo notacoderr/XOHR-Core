@@ -3,16 +3,22 @@
 namespace Clik\MGCore;
 
 use pocketmine\plugin\PluginBase;
+
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
+
 use pocketmine\utils\TextFormat as TF;
+
 use pocketmine\level\Position;
+
 use pocketmine\inventory\PlayerInventory;
 use pocketmine\inventory\ArmorInventory;
+
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\player\PlayerQuitEvent;
 use pocketmine\event\player\PlayerDeathEvent;
+
 use pocketmine\Server;
 use pocketmine\Player;
 
