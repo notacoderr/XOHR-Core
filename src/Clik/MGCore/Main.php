@@ -119,8 +119,8 @@ public function onEnable(){
         }
         if($cmd->getName() == "hub") {
             if($sender instanceof Player) {
-                $player->getInventory()->clearAll();
-                $player->getArmorInventory()->clearAll();
+                $sender->getInventory()->clearAll();
+                $sender->getArmorInventory()->clearAll();
                 $level = $this->getServer()->getLevelByName("world");
                 $x = 24;
                 $y = 69;
