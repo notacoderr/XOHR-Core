@@ -62,14 +62,14 @@ public function onEnable(){
     public function onPlace(BlockPlaceEvent $event) {
         $player = $event->getPlayer();
         $world = $player->getLevel();
-        if($level == "Duels" OR $level == "WinterSpikes") {
+        if($world == "Duels" OR $world == "WinterSpikes") {
             $event->setCancelled(true);
         }
     }
     public function onBreak(BlockBreakEvent $event) {
         $player = $event->getPlayer();
         $world = $player->getLevel();
-        if($level == "Duels" OR $level == "WinterSpikes") {
+        if($world == "Duels" OR $world == "WinterSpikes") {
             $event->setCancelled(true);
         }
     }
