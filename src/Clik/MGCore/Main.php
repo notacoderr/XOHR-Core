@@ -18,6 +18,9 @@ use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\player\PlayerQuitEvent;
 use pocketmine\event\player\PlayerDeathEvent;
+use pocketmine\event\block\BlockPlaceEvent;
+use pocketmine\event\block\BlockBreakEvent;
+use pocketmine\event\block\LeavesDecayEvent;
 
 use pocketmine\Server;
 use pocketmine\Player;
@@ -33,6 +36,8 @@ public function onEnable(){
         $player = $event->getPlayer();
         $name = $player->getName();
         $event->setJoinMessage("§0• §7[§b+§7]§f". $name);
+        $player->setGamemode(2);
+        $player->setFood($player->getMaxFood());
         $player->getInventory()->clearAll();
         $player->getArmorInventory()->clearAll();
         $level = $this->getServer()->getLevelByName("world");
@@ -53,6 +58,23 @@ public function onEnable(){
         $player = $event->getPlayer();
         $name = $player->getName();
         $event->setDeathMessage("§0• §7[§4X§7]§f" . $name);
+    }
+    public function onPlace(BlockPlaceEvent $event) {
+        $player = $event->getPlayer();
+        $world = $player->getLevelByName();
+        if($level == "Duels" OR $level == "WinterSpikes") {
+            $event->setCancelled(true);
+        }
+    }
+    public function onBreak(BlockBreakEvent $event) {
+        $player = $event->getPlayer();
+        $world = $player->getLevelByName();
+        if($level == "Duels" OR $level == "WinterSpikes") {
+            $event->setCancelled(true);
+        }
+    }
+    public function onDecay(LeavesDecayEvent $event) {
+        $event->setCancelled(true);
     }
     public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args): bool
     {
