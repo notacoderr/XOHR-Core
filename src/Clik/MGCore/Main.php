@@ -28,7 +28,6 @@ public $fts = "§7[§6Orion§7] ";
 
 public function onEnable(){
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
-        $this->plugin->getServer()->getNetwork()->setName("§bOrion §f§l-§r §eMinigames§r");
     }
     public function onJoin(PlayerJoinEvent $event) {
         $player = $event->getPlayer();
