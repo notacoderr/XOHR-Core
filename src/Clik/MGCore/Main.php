@@ -57,20 +57,24 @@ public function onEnable(){
     public function onDeath(PlayerDeathEvent $event) {
         $player = $event->getPlayer();
         $name = $player->getName();
+        $level = $player->getLevel();
         $event->setDeathMessage("§0• §7[§4X§7]§f" . $name);
+        if($level === "WinterSpikes") {
+            $event->setDrops([]);
+        }
     }
     public function onPlace(BlockPlaceEvent $event) {
         $player = $event->getPlayer();
         $world = $player->getLevel();
-        if($world == "Duels" OR $world == "WinterSpikes") {
-            $event->setCancelled(true);
+        if($world === "WinterSpikes") {
+            $event->setCancelled();
         }
     }
     public function onBreak(BlockBreakEvent $event) {
         $player = $event->getPlayer();
         $world = $player->getLevel();
-        if($world == "Duels" OR $world == "WinterSpikes") {
-            $event->setCancelled(true);
+        if($world === "WinterSpikes") {
+            $event->setCancelled();
         }
     }
     public function onDecay(LeavesDecayEvent $event) {
@@ -168,8 +172,8 @@ public function onEnable(){
             if($sender instanceof Player) {
                 $sender->sendMessage("§6§o§lOrion Minigames Info§r");
                 $sender->sendMessage("§eOrion Minigames is a holdout server for the remnants");
-                $sender->sendMessage("§of JM Pocket Creative, Nebula Games, & FruityMCPE.");
-                $sender->sendMessage("§eThe Main Owner is Switchblade304, although Jes'kad Ad'aryc does a lot of the work");
+                $sender->sendMessage("§eof JM Pocket Creative, Nebula Games, & FruityMCPE.");
+                $sender->sendMessage("§eThe Main Owner is Switchblade304, although Jes'kad Ad'aryc does a lot of work.");
                 $sender->sendMessage("§eThe server is technically collectively owned by Jes'kad, Switchblade, Noah, and Celery.");
                 $sender->sendMessage("§eDiscord Link: https://discord.gg/ECGhkJc");
             }
