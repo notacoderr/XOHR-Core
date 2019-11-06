@@ -64,7 +64,7 @@ public function onEnable(){
             }
         }
     }
-    public function onPlace(BlockPlaceEvent $event) {
+    public function onBreak(BlockBreakEvent $event) {
         $player = $event->getPlayer();
         $world = $player->getLevel();
         if($world === "world"){
