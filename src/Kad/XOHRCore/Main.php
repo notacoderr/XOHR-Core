@@ -1,18 +1,17 @@
 <?php
 
-namespace Clik\XOHRCore;
+namespace Kad\XOHRCore;
 
 use pocketmine\plugin\PluginBase;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\utils\TextFormat as TF;
 use pocketmine\level\Position;
-use pocketmine\inventory\PlayerInventory;
-use pocketmine\inventory\ArmorInventory;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\player\PlayerQuitEvent;
 use pocketmine\event\player\PlayerDeathEvent;
+use pocketmine\event\player\PlayerRespawnEvent;
 use pocketmine\event\block\BlockPlaceEvent;
 use pocketmine\event\block\BlockBreakEvent;
 use pocketmine\event\block\LeavesDecayEvent;
@@ -47,6 +46,14 @@ public function onEnable(){
         $player = $event->getPlayer();
         $name = $player->getName();
         $event->setDeathMessage("§0• §7[§4X§7]§f" . $name);
+    }
+    public function onRespawn(PlayerRespawnEvent $event) {
+        $world = $this->getServer()->getLevelByName("world");
+        $x = 0;
+        $y = 65;
+        $z = 0;
+        $pos = new Position($x, $y, $z, $world);
+        $event->setRespawnPosition($pos);
     }
     public function onPlace(BlockPlaceEvent $event) {
         $player = $event->getPlayer();
