@@ -59,7 +59,7 @@ public function onEnable(){
         $player = $event->getPlayer();
         $world = $player->getLevel();
         if($world === "world"){
-            if(!$player->hasPermission("verified.user"){
+            if(!$player->hasPermission("verified.user")){
                 $event->setCancelled();
             }
         }
@@ -68,7 +68,7 @@ public function onEnable(){
         $player = $event->getPlayer();
         $world = $player->getLevel();
         if($world === "world"){
-            if(!$player->hasPermission("verified.user"){
+            if(!$player->hasPermission("verified.user")){
                 $event->setCancelled();
             }
         }
