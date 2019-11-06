@@ -1,19 +1,14 @@
 <?php
 
-namespace Clik\MGCore;
+namespace Clik\XOHRCore;
 
 use pocketmine\plugin\PluginBase;
-
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
-
 use pocketmine\utils\TextFormat as TF;
-
 use pocketmine\level\Position;
-
 use pocketmine\inventory\PlayerInventory;
 use pocketmine\inventory\ArmorInventory;
-
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\player\PlayerQuitEvent;
@@ -21,7 +16,6 @@ use pocketmine\event\player\PlayerDeathEvent;
 use pocketmine\event\block\BlockPlaceEvent;
 use pocketmine\event\block\BlockBreakEvent;
 use pocketmine\event\block\LeavesDecayEvent;
-
 use pocketmine\Server;
 use pocketmine\Player;
 
@@ -36,14 +30,11 @@ public function onEnable(){
         $player = $event->getPlayer();
         $name = $player->getName();
         $event->setJoinMessage("§0• §7[§b+§7]§f". $name);
-        $player->setGamemode(2);
-        $player->setFood($player->getMaxFood());
-        $player->getInventory()->clearAll();
-        $player->getArmorInventory()->clearAll();
+        $player->setGamemode(1);
         $level = $this->getServer()->getLevelByName("world");
-        $x = 24;
-        $y = 69;
-        $z = -21;
+        $x = 0;
+        $y = 65;
+        $z = 0;
         $pos = new Position($x, $y, $z, $level);
         $player->teleport($pos);
     }
@@ -51,30 +42,28 @@ public function onEnable(){
         $player = $event->getPlayer();
         $name = $player->getName();
         $event->setQuitMessage("§0• §7[§b-§7]§f" . $name);
-        $player->getInventory()->clearAll();
-        $player->getArmorInventory()->clearAll();
     }
     public function onDeath(PlayerDeathEvent $event) {
         $player = $event->getPlayer();
         $name = $player->getName();
-        $level = $player->getLevel();
         $event->setDeathMessage("§0• §7[§4X§7]§f" . $name);
-        if($level === "WinterSpikes") {
-            $event->setDrops([]);
+    }
+    public function onPlace(BlockPlaceEvent $event) {
+        $player = $event->getPlayer();
+        $world = $player->getLevel();
+        if($world === "world"){
+            if(!$player->hasPermission("verified.user"){
+                $event->setCancelled();
+            }
         }
     }
     public function onPlace(BlockPlaceEvent $event) {
         $player = $event->getPlayer();
         $world = $player->getLevel();
-        if($world === "WinterSpikes") {
-            $event->setCancelled();
-        }
-    }
-    public function onBreak(BlockBreakEvent $event) {
-        $player = $event->getPlayer();
-        $world = $player->getLevel();
-        if($world === "WinterSpikes") {
-            $event->setCancelled();
+        if($world === "world"){
+            if(!$player->hasPermission("verified.user"){
+                $event->setCancelled();
+            }
         }
     }
     public function onDecay(LeavesDecayEvent $event) {
@@ -84,7 +73,7 @@ public function onEnable(){
     {
         if($cmd->getName() == "gmc") {
             if($sender instanceof Player) {
-                if($sender->hasPermission("orioncore.gmc.use")) {
+                if($sender->hasPermission("xohrcore.gmc.use")) {
                     $sender->setGamemode(1);
                     $sender->sendMessage($this->fts . TF::GREEN . "Your gamemode has been set to creative!");
                 } else {
@@ -94,7 +83,7 @@ public function onEnable(){
         }
         if($cmd->getName() == "gms") {
             if($sender instanceof Player) {
-                if($sender->hasPermission("orioncore.gms.use")) {
+                if($sender->hasPermission("xohrcore.gms.use")) {
                     $sender->setGamemode(0);
                     $sender->sendMessage($this->fts . TF::GREEN . "Your gamemode has been set to Survival!");
                 } else {
@@ -104,7 +93,7 @@ public function onEnable(){
         }
         if($cmd->getName() == "gma") {
             if($sender instanceof Player) {
-                if($sender->hasPermission("orioncore.gma.use")) {
+                if($sender->hasPermission("xohrcore.gma.use")) {
                     $sender->setGamemode(2);
                     $sender->sendMessage($this->fts . TF::GREEN . "Your gamemode has been set to Adventure!");
                 } else {
@@ -114,7 +103,7 @@ public function onEnable(){
         }
         if($cmd->getName() == "gmspc") {
             if($sender instanceof Player) {
-                if($sender->hasPermission("orioncore.gmspc.use")) {
+                if($sender->hasPermission("xohrcore.gmspc.use")) {
                     $sender->setGamemode(3);
                     $sender->sendMessage($this->fts . TF::GREEN . "Your gamemode has been set to Spectator!");
                 } else {
@@ -124,7 +113,7 @@ public function onEnable(){
         }
         if($cmd->getName() == "day") {
             if($sender instanceof Player) {
-                if($sender->hasPermission("orioncore.day.use")) {
+                if($sender->hasPermission("xohrcore.day.use")) {
                     $sender->getLevel()->setTime(6000);
                     $sender->sendMessage($this->fts . TF::GREEN . "Set the time to Day (6000) in your world!");
                 } else {
@@ -134,7 +123,7 @@ public function onEnable(){
         }
         if($cmd->getName() == "night") {
             if($sender instanceof Player) {
-                if($sender->hasPermission("orioncore.night.use")) {
+                if($sender->hasPermission("xohrcore.night.use")) {
                     $sender->getLevel()->setTime(16000);
                     $sender->sendMessage($this->fts . TF::GREEN . "Set the time to Night (16000) in your world!");
                 } else {
@@ -147,9 +136,9 @@ public function onEnable(){
                 $sender->getInventory()->clearAll();
                 $sender->getArmorInventory()->clearAll();
                 $level = $this->getServer()->getLevelByName("world");
-                $x = 24;
-                $y = 69;
-                $z = -21;
+                $x = 0;
+                $y = 65;
+                $z = 0;
                 $pos = new Position($x, $y, $z, $level);
                 $sender->teleport($pos);
                 $sender->sendMessage($this->fts . TF::GOLD . "Teleported to Hub");
@@ -160,7 +149,7 @@ public function onEnable(){
         }
         if($cmd->getName() == "rules") {
             if($sender instanceof Player) {
-                $sender->sendMessage("§6§o§lOrion Minigames Rules§r");
+                $sender->sendMessage("§6§o§lXOXO High RP Rebooted Rules§r");
                 $sender->sendMessage("§f- §eNo Advertising");
                 $sender->sendMessage("§f- §eNo NSFW");
                 $sender->sendMessage("§f- §eNo cursing. (Censoring words is allowed.)");
@@ -170,12 +159,12 @@ public function onEnable(){
         }
         if($cmd->getName() == "info") {
             if($sender instanceof Player) {
-                $sender->sendMessage("§6§o§lOrion Minigames Info§r");
-                $sender->sendMessage("§eOrion Minigames is a holdout server for the remnants");
-                $sender->sendMessage("§eof JM Pocket Creative, Nebula Games, & FruityMCPE.");
-                $sender->sendMessage("§eThe Main Owner is Switchblade304, although Jes'kad Ad'aryc does a lot of work.");
-                $sender->sendMessage("§eThe server is technically collectively owned by Jes'kad, Switchblade, Noah, and Celery.");
-                $sender->sendMessage("§eDiscord Link: https://discord.gg/ECGhkJc");
+                $sender->sendMessage("§6§o§lXOXO High RP Rebooted Info§r");
+                $sender->sendMessage("§eXOXO High RolePlay is a holdout server for the remnants");
+                $sender->sendMessage("§eof JM Pocket Creative, Nebula Games, XOXO High RolePlay, Neptune, Lapis, and Orion.");
+                $sender->sendMessage("§eThe Main Owner is LordEllis999, although KadTheHunter does a lot of the coding.");
+                $sender->sendMessage("§eThe server is meant to bring together whoever is still there from the past, regardless of the various wars and drama that occured between them.");
+                $sender->sendMessage("§eDiscord Link: https://discord.gg/9b2qTXV");
             }
         }
     return true;
