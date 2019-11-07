@@ -146,8 +146,6 @@ public function onEnable(){
         }
         if($cmd->getName() == "hub") {
             if($sender instanceof Player) {
-                $sender->getInventory()->clearAll();
-                $sender->getArmorInventory()->clearAll();
                 $level = $this->getServer()->getLevelByName("world");
                 $x = 0;
                 $y = 65;
@@ -155,11 +153,21 @@ public function onEnable(){
                 $pos = new Position($x, $y, $z, $level);
                 $sender->teleport($pos);
                 $sender->sendMessage($this->fts . TF::GOLD . "Teleported to Hub");
-                $sender->setGamemode(0);
             } else {
                 $sender->sendMessage($this->fts . TF::RED . "An error has occurred. Please contact Jes'kad Ad'aryc#3845 on Discord to report this");
             }
         }
+        if($cmd->getName() == "hybridhub"){
+            if($sender->hasPermission("hybrid.member")){
+#               $level = $this->getServer()->getLevelByName("world");
+#               $x = ?;
+#               $y = ?;
+#               $z = ?;
+#               $pos = new Position($x, $y, $z, $level);
+#               $sender->teleport($pos);
+#               $sender->sendMessage($this->fts . TF::GOLD . "Teleported to Hub");
+            }
+        }       
         if($cmd->getName() == "rules") {
             if($sender instanceof Player) {
                 $sender->sendMessage("§6§o§lXOXO High RP Rebooted Rules§r");
