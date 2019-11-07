@@ -29,13 +29,21 @@ public function onEnable(){
         $player = $event->getPlayer();
         $name = $player->getName();
         $event->setJoinMessage("§0• §7[§b+§7]§f". $name);
-        $player->setGamemode(1);
         $level = $this->getServer()->getLevelByName("world");
         $x = 0;
         $y = 65;
         $z = 0;
         $pos = new Position($x, $y, $z, $level);
         $player->teleport($pos);
+        if($player->hasPermission("rank.vip")){
+            $player->setGamemode(1);
+        }
+        if($player->hasPermission("rank.op")){
+            $player->setGamemode(1);
+        }
+        if($player->hasPermission("rank.player")){
+            $player->setGamemode(2);
+        }
     }
     public function onQuit(PlayerQuitEvent $event) {
         $player = $event->getPlayer();
