@@ -31,22 +31,27 @@ commands:
     description: Shows the servers Information
 
 permissions:
-  orioncore.gmc.use:
+  xohrcore.gmc.use:
     description: GMC Command
     default: OP
-  orioncore.gms.use:
+  xohrcore.gms.use:
     description: GMS Command
     default: OP
-  orioncore.gma.use:
+  xohrcore.gma.use:
     description: GMA Command
     default: OP
-  orioncore.gmspc.use:
+  xohrcore.gmspc.use:
     description: GMSPC Command
     default: OP
-  orioncore.day.use:
+  xohrcore.day.use:
     description: DAY Command
     default: OP
-  orioncore.night.use:
+  xohrcore.night.use:
     description: NIGHT Command
     default: OP
-
+  rank.vip:
+    description: Allows VIP features
+    default: OP
+  rank.op:
+    description: Allows OP Join Features
+    default: OP
