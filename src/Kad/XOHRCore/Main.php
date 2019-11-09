@@ -61,20 +61,22 @@ public function onEnable(){
         $pos = new Position($x, $y, $z, $world);
         $event->setRespawnPosition($pos);
     }
-    public function onPlace(BlockPlaceEvent $event) {
+    public function onPlace(BlockPlaceEvent $event){
         $player = $event->getPlayer();
-        $world = $player->getLevel();
-        if($world === "world"){
+        $level = $player->getLevel()->getName();
+        if($level == "world"){
             if(!$player->hasPermission("verified.user")){
+                $event->getPlayer()->sendMessage(TF::RED."Ray shields activated, Building is disabled");
                 $event->setCancelled();
             }
         }
     }
-    public function onBreak(BlockBreakEvent $event) {
+    public function onBreak(BlockBreakEvent $event){
         $player = $event->getPlayer();
-        $world = $player->getLevel();
-        if($world === "world"){
+        $level = $player->getLevel()->getName();
+        if($level == "world"){
             if(!$player->hasPermission("verified.user")){
+                $event->getPlayer()->sendMessage(TF::RED."Ray shields activated, Building is disabled");
                 $event->setCancelled();
             }
         }
