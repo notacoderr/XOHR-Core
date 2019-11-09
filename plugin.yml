@@ -55,6 +55,9 @@ permissions:
   rank.op:
     description: Allows OP Join Features
     default: OP
+  verified.user:
+    description: Allows Verified user Status
+    default: OP
   hybrid.member:
     description: A command for the mighty, rifting to the HyHub is crucial for our escapades
     default: false
