@@ -161,13 +161,13 @@ public function onEnable(){
         }
         if($cmd->getName() == "hybridhub"){
             if($sender->hasPermission("hybrid.member")){
-#               $level = $this->getServer()->getLevelByName("world");
-#               $x = ?;
-#               $y = ?;
-#               $z = ?;
-#               $pos = new Position($x, $y, $z, $level);
-#               $sender->teleport($pos);
-#               $sender->sendMessage($this->fts . TF::GOLD . "Teleported to Hub");
+               $level = $this->getServer()->getLevelByName("TerraA");
+               $x = ?;
+               $y = ?;
+               $z = ?;
+               $pos = new Position($x, $y, $z, $level);
+               $sender->teleport($pos);
+               $sender->sendMessage($this->fts . TF::GOLD . "Teleported to HyHub");
             }
         }       
         if($cmd->getName() == "rules") {
