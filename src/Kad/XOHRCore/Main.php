@@ -162,9 +162,9 @@ public function onEnable(){
         if($cmd->getName() == "hybridhub"){
             if($sender->hasPermission("hybrid.member")){
                $level = $this->getServer()->getLevelByName("TerraA");
-               $x = ?;
-               $y = ?;
-               $z = ?;
+               $x = 0;
+               $y = 0;
+               $z = 0;
                $pos = new Position($x, $y, $z, $level);
                $sender->teleport($pos);
                $sender->sendMessage($this->fts . TF::GOLD . "Teleported to HyHub");
