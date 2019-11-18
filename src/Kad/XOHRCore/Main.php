@@ -35,14 +35,8 @@ public function onEnable(){
         $z = 0;
         $pos = new Position($x, $y, $z, $level);
         $player->teleport($pos);
-        if($player->hasPermission("rank.vip")){
-            $player->setGamemode(1);
-     } elseif($player->hasPermission("rank.op")){
-            $player->setGamemode(1);
-     } else {
-        $player->setGamemode(2);
-        }
-    }
+        $player->setGamemode(1);
+    }   
     public function onQuit(PlayerQuitEvent $event) {
         $player = $event->getPlayer();
         $name = $player->getName();
@@ -162,12 +156,12 @@ public function onEnable(){
         if($cmd->getName() == "hybridhub"){
             if($sender->hasPermission("hybrid.member")){
                $level = $this->getServer()->getLevelByName("TerraA");
-               $x = 0;
-               $y = 0;
-               $z = 0;
+               $x = 13;
+               $y = 72;
+               $z = 600;
                $pos = new Position($x, $y, $z, $level);
                $sender->teleport($pos);
-               $sender->sendMessage($this->fts . TF::GOLD . "Teleported to HyHub");
+               $sender->sendMessage($this->fts . TF::GOLD . "Teleported to Hybridian Prime");
             }
         }       
         if($cmd->getName() == "rules") {
