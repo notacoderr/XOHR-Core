@@ -6,22 +6,22 @@ author: Jes'kad Ad'aryc#3845
 commands:
   gmc:
     description: Changes your gamemode to Creative
-    permission: orioncore.gmc.use
+    permission: xohrcore.gmc.use
   gms:
     description: Changes your gamemode to Survival
-    permission: orioncore.gms.use
+    permission: xohrcore.gms.use
   gma:
     description: Changes your gamemode to Adventure
-    permission: orioncore.gma.use
+    permission: xohrcore.gma.use
   gmspc:
     description: Changes your gamemode to Spectator
-    permission: orioncore.gmspc.use
+    permission: xohrcore.gmspc.use
   day:
     description: Changes the time to Day in the world your in
-    permission: orioncore.day.use
+    permission: xohrcore.day.use
   night:
     description: Changes the time to Night in the world your in
-    permission: orioncore.night.use
+    permission: xohrcore.night.use
   hub:
     description: Teleports you to the Hub
     aliases: ["lobby","spawn"]
