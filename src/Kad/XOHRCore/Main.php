@@ -30,9 +30,9 @@ public function onEnable(){
         $name = $player->getName();
         $event->setJoinMessage("§0• §7[§b+§7]§f". $name);
         $level = $this->getServer()->getLevelByName("world");
-        $x = 0;
-        $y = 65;
-        $z = 0;
+        $x = 210.5;
+        $y = 68;
+        $z = 90.5;
         $pos = new Position($x, $y, $z, $level);
         $player->teleport($pos);
         $player->setGamemode(1);
@@ -49,9 +49,9 @@ public function onEnable(){
     }
     public function onRespawn(PlayerRespawnEvent $event) {
         $world = $this->getServer()->getLevelByName("world");
-        $x = 0;
-        $y = 65;
-        $z = 0;
+        $x = 210.5;
+        $y = 68;
+        $z = 90.5;
         $pos = new Position($x, $y, $z, $world);
         $event->setRespawnPosition($pos);
     }
@@ -143,9 +143,9 @@ public function onEnable(){
         if($cmd->getName() == "hub") {
             if($sender instanceof Player) {
                 $level = $this->getServer()->getLevelByName("world");
-                $x = 0;
-                $y = 65;
-                $z = 0;
+                $x = 210.5;
+                $y = 68;
+                $z = 90.5;
                 $pos = new Position($x, $y, $z, $level);
                 $sender->teleport($pos);
                 $sender->sendMessage($this->fts . TF::GOLD . "Teleported to Hub");
@@ -156,9 +156,9 @@ public function onEnable(){
         if($cmd->getName() == "hybridhub"){
             if($sender->hasPermission("hybrid.member")){
                $level = $this->getServer()->getLevelByName("TerraA");
-               $x = 13;
+               $x = 13.5;
                $y = 72;
-               $z = 600;
+               $z = 600.5;
                $pos = new Position($x, $y, $z, $level);
                $sender->teleport($pos);
                $sender->sendMessage($this->fts . TF::GOLD . "Teleported to Hybridian Prime");
