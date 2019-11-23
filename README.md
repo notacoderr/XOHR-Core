@@ -7,7 +7,7 @@ This specification is in addition to the Apache 2.0 License, seen in [License.md
 
 ### Discord
 <div align="center">
-<a href="https://discord.gg/9b2qTXV">
+<a href="https://discord.gg/A64ZVAa">
         <img src="https://img.shields.io/badge/chat-on%20discord-7289da.svg" alt="discord">
     </a>
 </div>
