@@ -163,10 +163,23 @@ public function onEnable(){
                $sender->teleport($pos);
                $sender->sendMessage($this->fts . TF::GOLD . "Teleported to Hybridian Prime");
             }
-        }       
+        }
+        if($cmd->getName() == "nv") {
+            if($sender instanceof Player) {
+                if($sender->getEffect(Effect::NIGHT_VISION)) {
+                    $sender->sendMessage($this->fts . TF::DARK_RED . "NightVision turned off!");
+                    $sender->removeEffect(Effect::NIGHT_VISION);
+            } else {
+                $sender->sendMessage($this->fts . TF::GREEN . "NightVision turned on!");
+                $sender->addEffect(new EffectInstance(Effect::getEffectByName("NIGHT_VISION"), INT32_MAX, 1, false));
+            }
+        } else {
+            $sender->sendMessage($this->fts . TF::RED . "This command only works in game");
+            }  
+        }     
         if($cmd->getName() == "rules") {
             if($sender instanceof Player) {
-                $sender->sendMessage("§6§o§lXOXO High RP Rebooted Rules§r");
+                $sender->sendMessage("§6§o§lXOXO High RolePlay Rules§r");
                 $sender->sendMessage("§f- §eNo Advertising");
                 $sender->sendMessage("§f- §eNo NSFW");
                 $sender->sendMessage("§f- §eNo cursing. (Censoring words is allowed.)");
@@ -177,11 +190,11 @@ public function onEnable(){
         if($cmd->getName() == "info") {
             if($sender instanceof Player) {
                 $sender->sendMessage("§6§o§lXOXO High RP Rebooted Info§r");
-                $sender->sendMessage("§eXOXO High RolePlay is a holdout server for the remnants");
-                $sender->sendMessage("§eof JM Pocket Creative, Nebula Games, XOXO High RolePlay, Neptune, Lapis, and Orion.");
-                $sender->sendMessage("§eThe Main Owner is LordEllis999, although KadTheHunter does a lot of the coding.");
+                $sender->sendMessage("§eXOXO High RolePlay is a server for the remnants");
+                $sender->sendMessage("§eof JM Pocket Creative, Nebula Games, XOXO High RolePlay, Neptune, Lapis Games, and Orion RolePlay PvP & Plots.");
+                $sender->sendMessage("§eThere are 5 Leaders, Kad, Cara, Becca, Skull, & Chocky.");
                 $sender->sendMessage("§eThe server is meant to bring together whoever is still there from the past, regardless of the various wars and drama that occured between them.");
-                $sender->sendMessage("§eDiscord Link: https://discord.gg/9b2qTXV");
+                $sender->sendMessage("§eDiscord Link: https://discord.gg/A64ZVAa");
             }
         }
     return true;
