@@ -60,7 +60,7 @@ public function onEnable(){
         $level = $player->getLevel()->getName();
         if($level == "world"){
             if(!$player->hasPermission("verified.user")){
-                $event->getPlayer()->sendMessage(TF::RED."Ray shields activated, Building is disabled");
+                $event->getPlayer()->sendMessage(TF::RED."You have not been Verified. See Hub for how to Verify, and get access to Build.");
                 $event->setCancelled();
             }
         }
@@ -70,7 +70,7 @@ public function onEnable(){
         $level = $player->getLevel()->getName();
         if($level == "world"){
             if(!$player->hasPermission("verified.user")){
-                $event->getPlayer()->sendMessage(TF::RED."Ray shields activated, Building is disabled");
+                $event->getPlayer()->sendMessage(TF::RED."You have not been Verified. See Hub for how to Verify, and get access to Build.");
                 $event->setCancelled();
             }
         }
